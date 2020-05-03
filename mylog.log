@@ -1,11 +1,11 @@
-My widget: stdClass Object
+My collaborate: stdClass Object
 (
     [id] => 1
     [course] => 3
-    [name] => Test widget
-    [intro] => <p>A widget test.</p><p><img src="@@PLUGINFILE@@/replace.PNG" alt="replace" class="img-responsive atto_image_button_text-bottom" width="475" height="231"><br></p>
+    [name] => Test collaborate
+    [intro] => <p>A collaborate test.</p><p><img src="@@PLUGINFILE@@/replace.PNG" alt="replace" class="img-responsive atto_image_button_text-bottom" width="475" height="231"><br></p>
     [introformat] => 1
-    [title] => My widget
+    [title] => My collaborate
     [timecreated] => 1560635386
     [timemodified] => 0
     [grade] => 100
@@ -34,8 +34,8 @@ My instance: stdClass Object
     [showdescription] => 0
     [availability] => 
     [deletioninprogress] => 0
-    [name] => Test widget
-    [modname] => widget
+    [name] => Test collaborate
+    [modname] => collaborate
 )
 
 My instance: stdClass Object
@@ -61,8 +61,8 @@ My instance: stdClass Object
     [showdescription] => 0
     [availability] => 
     [deletioninprogress] => 0
-    [name] => Test widget
-    [modname] => widget
+    [name] => Test collaborate
+    [modname] => collaborate
 )
 
 My instance: stdClass Object
@@ -88,8 +88,8 @@ My instance: stdClass Object
     [showdescription] => 0
     [availability] => 
     [deletioninprogress] => 0
-    [name] => Test widget (copy)
-    [modname] => widget
+    [name] => Test collaborate (copy)
+    [modname] => collaborate
 )
 
 My instance: stdClass Object
@@ -115,7 +115,7 @@ My instance: stdClass Object
     [showdescription] => 0
     [availability] => 
     [deletioninprogress] => 0
-    [name] => Test widget (copy)
-    [modname] => widget
+    [name] => Test collaborate (copy)
+    [modname] => collaborate
 )
 
