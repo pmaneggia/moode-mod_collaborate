@@ -65,11 +65,11 @@ class backup_collaborate_activity_task extends backup_activity_task {
 
         // Link to the list of collaborates.
         $search = '/('.$base.'\/mod\/collaborate\/index.php\?id\=)([0-9]+)/';
-        $content = preg_replace($search, '$@WIDGETINDEX*$2@$', $content);
+        $content = preg_replace($search, '$@COLLABORATEINDEX*$2@$', $content);
 
         // Link to collaborate view by moduleid.
         $search = '/('.$base.'\/mod\/collaborate\/view.php\?id\=)([0-9]+)/';
-        $content = preg_replace($search, '$@WIDGETVIEWBYID*$2@$', $content);
+        $content = preg_replace($search, '$@COLLABORATEVIEWBYID*$2@$', $content);
 
         return $content;
     }
