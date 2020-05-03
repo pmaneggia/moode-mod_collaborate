@@ -50,8 +50,8 @@ $PAGE->set_pagelayout('incourse');
 echo $OUTPUT->header();
 echo $OUTPUT->heading($strname);
 
-if (! $collaborates = get_all_instances_in_course('widget', $course)) {
-    notice(get_string('nocollaborates', 'widget'), new moodle_url('/course/view.php', array('id' => $course->id)));
+if (! $collaborates = get_all_instances_in_course('collaborate', $course)) {
+    notice(get_string('nocollaborates', 'collaborate'), new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
 $usesections = course_format_uses_sections($course->format);

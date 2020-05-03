@@ -70,11 +70,11 @@ function collaborate_supports($feature) {
  * @param mod_collaborate_mod_form $mform The form instance itself (if needed)
  * @return int The id of the newly inserted collaborate record
  */
-function collaborate_add_instance(stdClass $widget, mod_widget_mod_form $mform = null) {
+function collaborate_add_instance(stdClass $collaborate, mod_collaborate_mod_form $mform = null) {
     global $DB;
 
     $collaborate->timecreated = time();
-    $collaborate->id = $DB->insert_record('widget', $widget);
+    $collaborate->id = $DB->insert_record('collaborate', $collaborate);
 
     return $collaborate->id;
 }
@@ -90,13 +90,13 @@ function collaborate_add_instance(stdClass $widget, mod_widget_mod_form $mform =
  * @param mod_collaborate_mod_form $mform The form instance itself (if needed)
  * @return boolean Success/Fail
  */
-function collaborate_update_instance(stdClass $widget, mod_widget_mod_form $mform = null) {
+function collaborate_update_instance(stdClass $collaborate, mod_collaborate_mod_form $mform = null) {
     global $DB;
 
     $collaborate->timemodified = time();
-    $collaborate->id = $widget->instance;
+    $collaborate->id = $collaborate->instance;
 
-    $result = $DB->update_record('collaborate', $widget);
+    $result = $DB->update_record('collaborate', $collaborate);
 
     return $result;
 }
@@ -115,18 +115,18 @@ function collaborate_refresh_events($courseid = 0) {
     global $DB;
 
     if ($courseid == 0) {
-        if (!$collaborates = $DB->get_records('widget')) {
+        if (!$collaborates = $DB->get_records('collaborate')) {
             return true;
         }
     } else {
-        if (!$collaborates = $DB->get_records('widget', array('course' => $courseid))) {
+        if (!$collaborates = $DB->get_records('collaborate', array('course' => $courseid))) {
             return true;
         }
     }
 
-    foreach ($collaborates as $widget) {
+    foreach ($collaborates as $collaborate) {
         // Create a function such as the one below to deal with updating calendar events.
-        // collaborate_update_events($widget);
+        // collaborate_update_events($collaborate);
     }
 
     return true;
@@ -145,12 +145,12 @@ function collaborate_refresh_events($courseid = 0) {
 function collaborate_delete_instance($id) {
     global $DB;
 
-    if (! $collaborate = $DB->get_record('widget', array('id' => $id))) {
+    if (! $collaborate = $DB->get_record('collaborate', array('id' => $id))) {
         return false;
     }
 
     // Delete any dependent records here.
-    $DB->delete_records('collaborate', array('id' => $widget->id));
+    $DB->delete_records('collaborate', array('id' => $collaborate->id));
 
     return true;
 }
@@ -166,10 +166,10 @@ function collaborate_delete_instance($id) {
  * @param stdClass $course The course record
  * @param stdClass $user The user record
  * @param cm_info|stdClass $mod The course module info object or record
- * @param stdClass $collaborate The widget instance record
+ * @param stdClass $collaborate The collaborate instance record
  * @return stdClass|null
  */
-function collaborate_user_outline($course, $user, $mod, $widget) {
+function collaborate_user_outline($course, $user, $mod, $collaborate) {
 
     $return = new stdClass();
     $return->time = 0;
@@ -188,7 +188,7 @@ function collaborate_user_outline($course, $user, $mod, $widget) {
  * @param cm_info $mod course module info
  * @param stdClass $collaborate the module instance record
  */
-function collaborate_user_complete($course, $user, $mod, $widget) {
+function collaborate_user_complete($course, $user, $mod, $collaborate) {
 }
 
 /**
@@ -273,9 +273,9 @@ function collaborate_get_extra_capabilities() {
  * @param int $scaleid ID of the scale
  * @return bool true if the scale is used by the given collaborate instance
  */
-function collaborate_scale_used($widgetid, $scaleid) {
+function collaborate_scale_used($collaborateid, $scaleid) {
     global $DB;
-    if ($scaleid and $DB->record_exists('collaborate', array('id' => $widgetid, 'grade' => -$scaleid))) {
+    if ($scaleid and $DB->record_exists('collaborate', array('id' => $collaborateid, 'grade' => -$scaleid))) {
         return true;
     } else {
         return false;
@@ -306,7 +306,7 @@ function collaborate_scale_used_anywhere($scaleid) {
  * @param bool $reset reset grades in the gradebook
  * @return void
  */
-function collaborate_grade_item_update(stdClass $widget, $reset=false) {
+function collaborate_grade_item_update(stdClass $collaborate, $reset=false) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
     $item = array();
@@ -325,7 +325,7 @@ function collaborate_grade_item_update(stdClass $widget, $reset=false) {
     if ($reset) {
         $item['reset'] = true;
     }
-    grade_update('mod/collaborate', $widget->course, 'mod', 'widget',
+    grade_update('mod/collaborate', $collaborate->course, 'mod', 'collaborate',
             $collaborate->id, 0, null, $item);
 }
 /**
@@ -334,10 +334,10 @@ function collaborate_grade_item_update(stdClass $widget, $reset=false) {
  * @param stdClass $collaborate instance object
  * @return grade_item
  */
-function collaborate_grade_item_delete($widget) {
+function collaborate_grade_item_delete($collaborate) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
-    return grade_update('mod/collaborate', $widget->course, 'mod', 'widget',
+    return grade_update('mod/collaborate', $collaborate->course, 'mod', 'collaborate',
             $collaborate->id, 0, null, array('deleted' => 1));
 }
 /**
@@ -348,12 +348,12 @@ function collaborate_grade_item_delete($widget) {
  * @param stdClass $collaborate instance object with extra cmidnumber and modname property
  * @param int $userid update grade of specific user only, 0 means all participants
  */
-function collaborate_update_grades(stdClass $widget, $userid = 0) {
+function collaborate_update_grades(stdClass $collaborate, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
     // Populate array of grade objects indexed by userid.
     $grades = array();
-    grade_update('mod/collaborate', $widget->course, 'mod', 'widget', $widget->id, 0, $grades);
+    grade_update('mod/collaborate', $collaborate->course, 'mod', 'collaborate', $collaborate->id, 0, $grades);
 }
 
 /* File API */
@@ -443,8 +443,8 @@ function collaborate_extend_navigation(navigation_node $navref, stdClass $course
  * so it is safe to rely on the $PAGE.
  *
  * @param settings_navigation $settingsnav complete settings navigation tree
- * @param navigation_node $collaboratenode widget administration node
+ * @param navigation_node $collaboratenode collaborate administration node
  */
-function collaborate_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $widgetnode=null) {
+function collaborate_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $collaboratenode=null) {
     // TODO Delete this function and its docblock, or implement it.
 }

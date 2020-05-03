@@ -37,14 +37,14 @@ if ($id) {
             MUST_EXIST);
     $course = $DB->get_record('course',
             array('id' => $cm->course), '*', MUST_EXIST);
-    $collaborate = $DB->get_record('widget',
+    $collaborate = $DB->get_record('collaborate',
             array('id' => $cm->instance), '*', MUST_EXIST);
 } else if ($n) {
-    $collaborate = $DB->get_record('widget', array('id' => $n), '*',
+    $collaborate = $DB->get_record('collaborate', array('id' => $n), '*',
             MUST_EXIST);
     $course = $DB->get_record('course',
             array('id' => $collaborate->course), '*', MUST_EXIST);
-    $cm = get_coursemodule_from_instance('collaborate', $widget->id,
+    $cm = get_coursemodule_from_instance('collaborate', $collaborate->id,
             $course->id, false, MUST_EXIST);
 }
 

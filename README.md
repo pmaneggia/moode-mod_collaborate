@@ -59,7 +59,7 @@ Place the above code in a file called debugging.php.
 
 Modify the file location (mylog.log) if desired.  Anywhere you want to view the contents of an object use:
 <pre>
-\mod_collaborate\local\debugging::logit("What is in a widegt: ", $widget);
+\mod_collaborate\local\debugging::logit("What is in a widegt: ", $collaborate);
 </pre>
 Using Xdebug
 ============

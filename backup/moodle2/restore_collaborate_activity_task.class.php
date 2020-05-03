@@ -27,7 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/restore_widget_stepslib.php');
+require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/restore_collaborate_stepslib.php');
 
 /**
  * Restore task for the collaborate activity module
@@ -53,7 +53,7 @@ class restore_collaborate_activity_task extends restore_activity_task {
      */
     protected function define_my_steps() {
         // We have just one structure step here.
-        $this->add_step(new restore_collaborate_activity_structure_step('widget_structure', 'widget.xml'));
+        $this->add_step(new restore_collaborate_activity_structure_step('collaborate_structure', 'collaborate.xml'));
     }
 
     /**
@@ -63,7 +63,7 @@ class restore_collaborate_activity_task extends restore_activity_task {
     static public function define_decode_contents() {
         $contents = array();
 
-        $contents[] = new restore_decode_content('collaborate', array('intro'), 'widget');
+        $contents[] = new restore_decode_content('collaborate', array('intro'), 'collaborate');
 
         return $contents;
     }
@@ -91,9 +91,9 @@ class restore_collaborate_activity_task extends restore_activity_task {
     static public function define_restore_log_rules() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('collaborate', 'add', 'view.php?id={course_module}', '{widget}');
-        $rules[] = new restore_log_rule('collaborate', 'update', 'view.php?id={course_module}', '{widget}');
-        $rules[] = new restore_log_rule('collaborate', 'view', 'view.php?id={course_module}', '{widget}');
+        $rules[] = new restore_log_rule('collaborate', 'add', 'view.php?id={course_module}', '{collaborate}');
+        $rules[] = new restore_log_rule('collaborate', 'update', 'view.php?id={course_module}', '{collaborate}');
+        $rules[] = new restore_log_rule('collaborate', 'view', 'view.php?id={course_module}', '{collaborate}');
 
         return $rules;
     }

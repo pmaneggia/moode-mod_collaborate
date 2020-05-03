@@ -26,8 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/backup_widget_stepslib.php');
-require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/backup_widget_settingslib.php');
+require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/backup_collaborate_stepslib.php');
+require_once($CFG->dirroot . '/mod/collaborate/backup/moodle2/backup_collaborate_settingslib.php');
 /**
  * Provides the steps to perform one complete backup of the collaborate instance
  *
@@ -49,7 +49,7 @@ class backup_collaborate_activity_task extends backup_activity_task {
      * Defines a backup step to store the instance data in the collaborate.xml file
      */
     protected function define_my_steps() {
-        $this->add_step(new backup_collaborate_activity_structure_step('widget_structure', 'widget.xml'));
+        $this->add_step(new backup_collaborate_activity_structure_step('collaborate_structure', 'collaborate.xml'));
     }
 
     /**

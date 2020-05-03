@@ -34,7 +34,7 @@ class mod_collaborate_renderer extends plugin_renderer_base {
     /**
      * Displays the main view page content.
      *
-     * @param $collaborate the widget instance std Object
+     * @param $collaborate the collaborate instance std Object
      * @param $cm the course module std Object
      * @return none
      */

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/collaborate/db" VERSION="20101203" COMMENT="XMLDB file for Moodle mod/widget"
+<XMLDB PATH="mod/collaborate/db" VERSION="20101203" COMMENT="XMLDB file for Moodle mod/collaborate"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="collaborate" COMMENT="Default comment for widget, please edit me">
+    <TABLE NAME="collaborate" COMMENT="Default comment for collaborate, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
         <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Course collaborate activity belongs to"/>
