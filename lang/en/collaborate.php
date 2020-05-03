@@ -32,14 +32,14 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['modulename'] = 'collaborate';
 $string['modulenameplural'] = 'collaborates';
-$string['modulename_help'] = 'Use the collaborate module for... | The widget module allows...';
-$string['collaborate:addinstance'] = 'Add a new widget';
-$string['collaborate:submit'] = 'Submit widget';
-$string['collaborate:view'] = 'View widget';
+$string['modulename_help'] = 'Use the collaborate module for... | The collaborate module allows...';
+$string['collaborate:addinstance'] = 'Add a new collaborate';
+$string['collaborate:submit'] = 'Submit collaborate';
+$string['collaborate:view'] = 'View collaborate';
 $string['collaboratefieldset'] = 'Custom example fieldset';
-$string['collaboratename'] = 'widget name';
-$string['collaboratename_help'] = 'This is the content of the help tooltip associated with the widgetname field. Markdown syntax is supported.';
-$string['collaborate'] = 'widget';
+$string['collaboratename'] = 'collaborate name';
+$string['collaboratename_help'] = 'This is the content of the help tooltip associated with the collaboratename field. Markdown syntax is supported.';
+$string['collaborate'] = 'collaborate';
 $string['pluginadministration'] = 'collaborate administration';
 $string['pluginname'] = 'collaborate';
 
