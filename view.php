@@ -63,5 +63,9 @@ $renderer = $PAGE->get_renderer('mod_collaborate');
 if (!$collaborate->intro) {
     $collaborate->intro = '';
 }
+
+// Test debugging
+\mod_collaborate\local\debugging::logit("What is in a collaborate ", $collaborate);
+
 // Call the renderer method to display the collaborate intro content.
 $renderer->render_view_page_content($collaborate, $cm);
