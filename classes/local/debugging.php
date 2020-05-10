@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 class debugging {
     public static function logit($message, $value) {
 
-        $file = fopen('mylog.log', 'a');
+        $file = fopen('/tmp/mylog.log', 'a');
 
         if ($file) {
             fwrite($file, print_r($message, true));
