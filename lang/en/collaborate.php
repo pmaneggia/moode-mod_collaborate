@@ -49,3 +49,8 @@ $string['title_help'] = 'Please select a suitable title for your collaborate mai
 
 // Events
 $string['pageviewed'] = 'Page viewed';
+
+// Editors
+$string['texteditor'] = 'Instructions {$a}';
+//$string['editorname'] = 'editor name {$a}';
+//$string['editorname{$a}_help'] = 'Write here the instructions for partner {$a}';

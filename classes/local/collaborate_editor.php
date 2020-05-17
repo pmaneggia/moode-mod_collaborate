@@ -63,5 +63,6 @@ class collaborate_editor {
         $mform->addElement('editor', $name, get_string('texteditor', 'mod_collaborate', $partner),
                 null, self::get_editor_options($context));
         $mform->setType($name, PARAM_RAW);
+        //$mform->addHelpButton($name, 'editorname'.$partner, 'collaborate');
     }
 }
