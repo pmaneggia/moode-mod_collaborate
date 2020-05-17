@@ -46,3 +46,6 @@ $string['pluginname'] = 'collaborate';
 // Mod form specific collaborate settings.
 $string['title'] = 'Activity Title: ';
 $string['title_help'] = 'Please select a suitable title for your collaborate main page.';
+
+// Events
+$string['pageviewed'] = 'Page viewed';

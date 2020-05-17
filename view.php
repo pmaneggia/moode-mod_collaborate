@@ -56,6 +56,15 @@ require_login($course, true, $cm);
 $PAGE->set_title(format_string($collaborate->name));
 $PAGE->set_heading(format_string($course->fullname));
 
+// Let's consider the activity "viewed" at this point.
+$completion = new completion_info($course);
+$completion->set_module_viewed($cm);
+
+debugging('Paola_log context debugging '. print_r($PAGE->context, true), DEBUG_DEVELOPER, null);
+// Let's add the module viewed event.
+$event = \mod_collaborate\event\page_viewed::create(['context' => $PAGE->context]);
+$event->trigger();
+
 // The renderer performs output to the page.
 $renderer = $PAGE->get_renderer('mod_collaborate');
 
@@ -63,9 +72,6 @@ $renderer = $PAGE->get_renderer('mod_collaborate');
 if (!$collaborate->intro) {
     $collaborate->intro = '';
 }
-
-// Test debugging
-\mod_collaborate\local\debugging::logit("What is in a collaborate ", $collaborate);
 
 // Call the renderer method to display the collaborate intro content.
 $renderer->render_view_page_content($collaborate, $cm);
