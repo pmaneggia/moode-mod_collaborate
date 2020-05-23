@@ -54,3 +54,9 @@ $string['pageviewed'] = 'Page viewed';
 $string['texteditor'] = 'Instructions {$a}';
 //$string['editorname'] = 'editor name {$a}';
 //$string['editorname{$a}_help'] = 'Write here the instructions for partner {$a}';
+
+// User button labels.
+$string['studenta'] = 'Partner A';
+$string['studentb'] = 'Partner B';
+
+$string['returnview'] = 'Back to collaborate';
