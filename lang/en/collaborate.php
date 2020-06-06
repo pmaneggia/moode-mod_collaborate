@@ -60,3 +60,7 @@ $string['studenta'] = 'Partner A';
 $string['studentb'] = 'Partner B';
 
 $string['returnview'] = 'Back to collaborate';
+
+// Admin Settings
+$string['enablereports'] = 'Enable collaborate reports';
+$string['enablereports_desc'] = 'check this box to enable the reports for the collaborate activity';
