@@ -33,9 +33,12 @@ defined('MOODLE_INTERNAL') || die();
 $string['modulename'] = 'collaborate';
 $string['modulenameplural'] = 'collaborates';
 $string['modulename_help'] = 'Use the collaborate module for... | The collaborate module allows...';
+
 $string['collaborate:addinstance'] = 'Add a new collaborate';
 $string['collaborate:submit'] = 'Submit collaborate';
 $string['collaborate:view'] = 'View collaborate';
+$string['collaborate:viewreportstab'] = 'View collaborate report tab';
+
 $string['collaboratefieldset'] = 'Custom example fieldset';
 $string['collaboratename'] = 'collaborate name';
 $string['collaboratename_help'] = 'This is the content of the help tooltip associated with the collaboratename field. Markdown syntax is supported.';
@@ -64,3 +67,7 @@ $string['returnview'] = 'Back to collaborate';
 // Admin Settings
 $string['enablereports'] = 'Enable collaborate reports';
 $string['enablereports_desc'] = 'check this box to enable the reports for the collaborate activity';
+
+// Tabs for reports on the view page
+$string['viewtab'] = 'View';
+$string['reportstab'] = 'Reports';
