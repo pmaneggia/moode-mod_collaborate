@@ -73,7 +73,24 @@ class mod_collaborate_renderer extends plugin_renderer_base {
         $data->user = 'User: '. strtoupper($page);
         // Get the content from the database.
         $content = ($page == 'a') ? $collaborate->instructionsa : $collaborate->instructionsb;
-        $data->body = $content;
+        
+        // $data->body = $content;  //this was before we got stuff from the editor
+        // new in week 4 tast 2
+        $filearea = 'instructions' . $page; 
+        $context = context_module::instance($cm->id);
+        $content = file_rewrite_pluginfile_urls($content, 'pluginfile.php', $context->id,
+            'mod_collaborate', $filearea, $collaborate->id);
+
+        // Run the content through format_text to enable streaming video etc.
+        $formatoptions = new stdClass;
+        $formatoptions->overflowdiv = true;
+        $formatoptions->context = $context;
+        $format = ($page == 'a') ? $collaborate->instructionsaformat : $collaborate->instructionsbformat;    
+
+        // Now we can assign the content to the $data->body:
+        $data->body = format_text($content, $format, $formatoptions);
+        // and we can pass that content to the mustache template as html.
+
         // Get a return url back to view page.
         $urlv = new \moodle_url('/mod/collaborate/view.php', ['id' => $cm->id]);
         $data->url_view = $urlv->out(false);
