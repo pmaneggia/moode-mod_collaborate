@@ -78,9 +78,10 @@ class mod_collaborate_renderer extends plugin_renderer_base {
      * @param $collaborate the collaborate instance std Object
      * @param $cm the course module std Object
      * @param $page the page ... ??? what a comment!!!
+     * @param $form the editor form for submitting.
      * @return none
      */
-    public function render_page_content($collaborate, $cm, $page) {
+    public function render_page_content($collaborate, $cm, $page, $form) {
         $data = new stdClass();
         $data->heading = $collaborate->title;
         $data->user = 'User: '. strtoupper($page);
@@ -103,6 +104,9 @@ class mod_collaborate_renderer extends plugin_renderer_base {
         // Now we can assign the content to the $data->body:
         $data->body = format_text($content, $format, $formatoptions);
         // and we can pass that content to the mustache template as html.
+
+        // Get the form html.
+        $data->form = $form->render();
 
         // Get a return url back to view page.
         $urlv = new \moodle_url('/mod/collaborate/view.php', ['id' => $cm->id]);

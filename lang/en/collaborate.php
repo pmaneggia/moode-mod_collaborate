@@ -71,3 +71,8 @@ $string['enablereports_desc'] = 'check this box to enable the reports for the co
 // Tabs for reports on the view page
 $string['viewtab'] = 'View';
 $string['reportstab'] = 'Reports';
+
+// Submissions form.
+$string['submission'] = 'Your submission';
+$string['submissionsave'] = 'Save submission';
+$string['submissionupdated'] = 'Submission updated';

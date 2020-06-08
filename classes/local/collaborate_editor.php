@@ -53,7 +53,6 @@ class collaborate_editor {
      * @param object $mform form to add the editor to.
      * @param object $context, the module context.
      * @param string $name the name of the editor to add.
-     * @return string array of editor options.
      */
     public static function add_editor($mform, $context, $name) {
         // Extract the partner label from name (a or b).

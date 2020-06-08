@@ -92,7 +92,7 @@ function collaborate_add_instance(stdClass $collaborate, mod_collaborate_mod_for
 
     foreach ($names as $name) {
         $collaborate =  file_postupdate_standard_editor($collaborate, $name, $options,
-                $context, 'mod_collaborate', $name, $collaborate->id);
+                $context, 'mod_collaborate', $name);// TODO , $collaborate->id);
     }
 
     $collaborate->id = $DB->insert_record('collaborate', $collaborate);
@@ -403,7 +403,8 @@ function collaborate_update_grades(stdClass $collaborate, $userid = 0) {
  */
 function collaborate_get_file_areas($course, $cm, $context) {
     return ['instructionsa' => 'Instructions for partner A',
-            'instructionsb' => 'Instructions for partner B'];
+            'instructionsb' => 'Instructions for partner B',
+            'submissions' => 'Student submissions'];
 }
 
 /**

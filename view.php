@@ -77,13 +77,15 @@ if (!$collaborate->intro) {
 }
 
 // Show reports tab if permission exists and admin has allowed.
-$reportstab = false;
-$config = get_config('mod_collaborate');
-if ($config->enablereports) {
-    if (has_capability('mod/collaborate:viewreportstab', $context)) {
-        $reportstab = true;
-    }
-}
+$reportstab = get_config('mod_collaborate')->enablereports && 
+        has_capability('mod/collaborate:viewreportstab', $context);
+// $reportstab = false;
+// $config = get_config('mod_collaborate');
+// if ($config->enablereports) {
+//     if (has_capability('mod/collaborate:viewreportstab', $context)) {
+//         $reportstab = true;
+//     }
+// }
 
 // Call the renderer method to display the collaborate intro content.
 // With a new parameter to determine status of tabs.
