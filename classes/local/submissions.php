@@ -126,9 +126,35 @@ class submissions {
             $data['firstname'] = $user->firstname;
             $data['lastname'] = $user->lastname;
             $data['grade'] = $record->grade;
+            $data['grade'] = ($record->grade == 0) ? '-' : $record->grade;
+
+            // Add a URL to the grading page.
+            $g = new \moodle_url('/mod/collaborate/grading.php', ['cid' => $collaborate->id, 
+                'sid' => $record->id]);
+            $data['gradelink'] = $g->out(false);
+            $data['gradetext'] = get_string('grade', 'mod_collaborate');
+
             $submissions[] = $data;
         }
 
         return $submissions;
+    }
+
+    public static function get_submission_to_grade($collaborate, $sid) {
+        global $DB;
+        $record = $DB->get_record('collaborate_submissions', ['id' => $sid], '*', MUST_EXIST);
+        $data = new \stdClass();
+        $data->title = $collaborate->title;
+        $data->submission = $record->submission;
+        $user = $DB->get_record('user', ['id' => $record->userid], '*', MUST_EXIST);
+        $data->firstname = $user->firstname;
+        $data->lastname = $user->lastname;
+        $data->grade = $record->grade;
+        return $data;
+    }
+
+    public static function update_grade($sid, $grade) {
+        global $DB;
+        $DB->set_field('collaborate_submissions', 'grade', $grade, ['id' => $sid]);
     }
 }

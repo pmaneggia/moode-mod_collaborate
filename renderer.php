@@ -144,4 +144,8 @@ class mod_collaborate_renderer extends plugin_renderer_base {
         echo $this->render_from_template('mod_collaborate/reports', $data);
         echo $this->output->footer();
     }
+
+    public function render_submission_to_grade($submission, $context, $cid, $sid) {
+
+    }
 }

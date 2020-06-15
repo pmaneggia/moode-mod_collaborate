@@ -38,6 +38,7 @@ $string['collaborate:addinstance'] = 'Add a new collaborate';
 $string['collaborate:submit'] = 'Submit collaborate';
 $string['collaborate:view'] = 'View collaborate';
 $string['collaborate:viewreportstab'] = 'View collaborate report tab';
+$string['collaborate:gradesubmission'] = 'Grade collaborate submissions';
 
 $string['collaboratefieldset'] = 'Custom example fieldset';
 $string['collaboratename'] = 'collaborate name';
@@ -85,3 +86,11 @@ $string['submission'] = 'Submission text (part)'; // TODO this we have twice
 $string['firstname'] = 'First name';
 $string['lastname'] = 'Last name';
 $string['grade'] = 'Grade';
+
+// Grading form.
+$string['grade'] = 'Grade';
+$string['allocate_grade'] = 'Allocate a grade';
+$string['gradingheader'] = 'Grade a submission';
+$string['currentgrade'] = 'Current grade: ';
+$string['user'] = 'User: ';
+$string['grade_saved'] = 'Grade saved';
