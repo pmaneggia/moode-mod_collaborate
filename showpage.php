@@ -68,8 +68,8 @@ $data = new stdClass();
 $data = submissions::get_submission($cid, $USER->id, $page);
 if ($data) {
     $options = collaborate_editor::get_editor_options($context);
-    $data = file_prepare_standard_editor($data, 'submission', $options, $context, 'mod_collaborate', 'submission',
-            $data->id);
+    $data = file_prepare_standard_editor($data, 'submission', $options, $context, 'mod_collaborate', 
+        'submission', $data->id);
     $form->set_data($data);
 }
 

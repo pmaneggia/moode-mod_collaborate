@@ -21,7 +21,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @see https://github.com/moodlehq/moodle-mod_collaborate
  * @see https://github.com/justinhunt/moodle-mod_collaborate */
-
+use \mod_collaborate\local\submissions;
 require_once('../../config.php');
 
 // The collaborate instance id.
@@ -45,6 +45,14 @@ $PAGE->set_pagelayout('course');
 
 // Prevent direct acess to the url.
 require_capability('mod/collaborate:viewreportstab', $context);
+
+// Get the data on submissions that's to be reported. (week 6)
+$submissions = submissions::get_submission_records($cid, $context);
+$headers = submissions::get_submission_record_headers();
+
+// Call our renderer to prepare the output.
+$renderer = $PAGE->get_renderer('mod_collaborate');
+$renderer->render_reports_page_content($collaborate, $cm, $submissions, $headers);
 
 $OUTPUT->header();
 echo 'reports';
