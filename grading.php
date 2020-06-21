@@ -39,7 +39,7 @@ class collaborate_grading_form extends moodleform {
 
         // grades available.
         $grades = array();
-        for ($m = 0; $m <= 100; $m++) {
+        for ($m = 0; $m <= $this->_customdata['maxgrade']; $m++) {
             $grades[$m] = '' . $m;
         }
         $mform->addElement('select', 'grade',
@@ -86,12 +86,8 @@ $reportsurl = new moodle_url('/mod/collaborate/reports.php', ['cid' => $cid]);
 
 // Get the submission information.
 $submission = submissions::get_submission_to_grade($collaborate, $sid);
-$mform = new collaborate_grading_form(null, ['cid' => $cid,'sid' => $sid ]);
+$mform = new collaborate_grading_form(null, ['cid' => $cid,'sid' => $sid, 'maxgrade' => $collaborate->grade ]);
 $reportsurl = new moodle_url('/mod/collaborate/reports.php', ['cid' => $cid]);
-
-// Get the submission information.
-$submission = submissions::get_submission_to_grade($collaborate, $sid);
-$mform = new collaborate_grading_form(null, ['cid' => $cid,'sid' => $sid]);
 
 if ($mform->is_cancelled()) {
     redirect($reportsurl, get_string('cancelled'), 2, notification::NOTIFY_INFO);
@@ -102,6 +98,11 @@ if ($data = $mform->get_data()) {
     $mform->set_data($data);
     // Update the submission data.
     submissions::update_grade($sid, $data->grade);
+
+    // new in week 6 task 3
+    // Update the gradebook.
+    collaborate_update_grades($collaborate);
+
     redirect($reportsurl, get_string('grade_saved', 'mod_collaborate'), 2,
             notification::NOTIFY_SUCCESS);
 }

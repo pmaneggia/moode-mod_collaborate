@@ -55,6 +55,7 @@ function xmldb_collaborate_upgrade($oldversion) {
         $table->add_field('submissionformat', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'submission');
         $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'submissionformat');
         $table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'timecreated');
+        $table->add_field('grade', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'grade');
 
         // Adding keys.
         $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
@@ -66,7 +67,7 @@ function xmldb_collaborate_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2020060604, 'collaborate');
     }
 
-    if ($oldversion < 2020060605) {
+    if ($oldversion < 2020062102) {
 
         // Define field id to be added to collaborate_submissions.
         $table = new xmldb_table('collaborate_submissions');

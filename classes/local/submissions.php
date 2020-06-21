@@ -149,12 +149,23 @@ class submissions {
         $user = $DB->get_record('user', ['id' => $record->userid], '*', MUST_EXIST);
         $data->firstname = $user->firstname;
         $data->lastname = $user->lastname;
-        $data->grade = $record->grade;
+        $data->grade = $record->grade; // loading grading.php I get ":  Undefined property: stdClass::$grade in submissions.php on line 152
         return $data;
     }
 
     public static function update_grade($sid, $grade) {
         global $DB;
         $DB->set_field('collaborate_submissions', 'grade', $grade, ['id' => $sid]);
+    }
+
+    public static function grade_user($attempts) {
+        global $DB;
+        // We could use different strategies here.
+        $maxscore = 0;
+        foreach ($attempts as $attempt) {
+            $grade = $attempt->grade;
+            $maxscore = ($grade > $maxscore) ? $grade : $maxscore;
+        }
+        return $maxscore;
     }
 }
