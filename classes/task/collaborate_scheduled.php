@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -25,14 +24,13 @@ require_once($CFG->dirroot . '/mod/collaborate/lib.php');
  * @copyright  2015 Flash Gordon http://www.flashgordon.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class collaborate_scheduled
-extends \core\task\scheduled_task {
+class collaborate_scheduled extends \core\task\scheduled_task {
 
     public function get_name() {
         // Shown in admin screens
         return get_string('collaboratetask', 'mod_collaborate');
    
-}
+    }
      /**
      *  Run all the tasks
      */

@@ -101,3 +101,4 @@ $string['edit'] = 'Here you can change the name';
 // Week 7 Tasks & Co
 $string['namechange'] = 'Change module name';
 $string['action'] = 'Action';
+$string['collaboratetask'] = 'Have a go with a collaborate task';
