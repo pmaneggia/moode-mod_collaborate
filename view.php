@@ -63,7 +63,7 @@ $PAGE->set_heading(format_string($course->fullname));
 $completion = new completion_info($course);
 $completion->set_module_viewed($cm);
 
-debugging('Paola_log context debugging '. print_r($PAGE->context, true), DEBUG_DEVELOPER, null);
+//debugging('Paola_log context debugging '. print_r($PAGE->context, true), DEBUG_DEVELOPER, null);
 // Let's add the module viewed event.
 $event = \mod_collaborate\event\page_viewed::create(['context' => $PAGE->context]);
 $event->trigger();

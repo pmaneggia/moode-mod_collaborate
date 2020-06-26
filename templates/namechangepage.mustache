@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">{{heading}}</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            {{#headers}}
+              <th>{{.}}</th>
+            {{/headers}}
+          </thead>
+          <tbody>
+            {{#rows}}
+              <tr class="danger">
+                <td>{{section}}</td>
+                <td class={{class}}>{{name}}</td>
+                <td><a href="{{{editurl}}}">{{# str }} edit, mod_collaborate {{/ str }}</a></td>
+              </tr>
+            {{/rows}}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

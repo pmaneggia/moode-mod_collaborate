@@ -579,6 +579,7 @@ function collaborate_pluginfile($course, $cm, $context, $filearea, array $args, 
  */
 function collaborate_extend_navigation(navigation_node $navref, stdClass $course, stdClass $module, cm_info $cm) {
     // TODO Delete this function and its docblock, or implement it.
+    // TODO !!?
 }
 
 /**
@@ -592,4 +593,10 @@ function collaborate_extend_navigation(navigation_node $navref, stdClass $course
  */
 function collaborate_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $collaboratenode=null) {
     // TODO Delete this function and its docblock, or implement it.
+    // Week 7
+    global $PAGE;
+    $namechanger_url = new moodle_url('/mod/collaborate/namechanger.php', ['courseid' => $PAGE->course->id]);
+    $collaboratenode->add(get_string('namechange', 'mod_collaborate', $namechanger_url));
+    //$settingsnav->add(get_string('namechange', 'mod_collaborate', $namechanger_url));
+
 }

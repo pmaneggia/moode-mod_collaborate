@@ -94,3 +94,10 @@ $string['gradingheader'] = 'Grade a submission';
 $string['currentgrade'] = 'Current grade: ';
 $string['user'] = 'User: ';
 $string['grade_saved'] = 'Grade saved';
+
+$string['nocollaborates'] = 'Name changer string'; // TODO julie, do the thing!
+$string['edit'] = 'Here you can change the name';
+
+// Week 7 Tasks & Co
+$string['namechange'] = 'Change module name';
+$string['action'] = 'Action';
