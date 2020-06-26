@@ -600,3 +600,14 @@ function collaborate_extend_settings_navigation(settings_navigation $settingsnav
     //$settingsnav->add(get_string('namechange', 'mod_collaborate', $namechanger_url));
 
 }
+
+/**
+ * A task called from scheduled or adhoc
+ * Week 7
+ *
+ * @param progress_trace trace object
+ *
+ */
+function collaborate_dotask(progress_trace $trace) {
+    $trace->output('executing dotask');
+}
