@@ -12,25 +12,19 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * Page viewed event class
- */
-
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>;.
 namespace mod_collaborate\event;
 defined('MOODLE_INTERNAL') || die();
 
-class page_viewed extends \core\event\base {
-    
+class submission_submitted extends \core\event\base {
     protected function init() {
-        $this->data['objecttable'] = 'collaborate';
-        $this->data['crud'] = 'r';
+        $this->data['objecttable'] = 'collaborate_submissions';
+        $this->data['crud'] = 'c';
         $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
     }
 
     public static function get_name() {
-        return get_string('pageviewed', 'mod_collaborate');
+        return get_string('submission_submitted', 'mod_collaborate');
     }
     /**
      * Returns non-localised event description with id's for admin use only.
@@ -39,9 +33,8 @@ class page_viewed extends \core\event\base {
      */
     public function get_description() {
         return "The user with id '$this->userid' has
-                viewed a page with the id '$this->objectid'
+                made a submission with the id '$this->objectid'
                 in the Collaborate activity with course
                 module id '$this->contextinstanceid'.";
     }
-
 }

@@ -65,7 +65,10 @@ $completion->set_module_viewed($cm);
 
 //debugging('Paola_log context debugging '. print_r($PAGE->context, true), DEBUG_DEVELOPER, null);
 // Let's add the module viewed event.
-$event = \mod_collaborate\event\page_viewed::create(['context' => $PAGE->context]);
+$event = \mod_collaborate\event\page_viewed::create(['context' => $PAGE->context, 'objectid' => $PAGE->cm->instance]);
+$event->add_record_snapshot('course_modules', $cm);
+$event->add_record_snapshot('course', $PAGE->course);
+$event->add_record_snapshot($PAGE->cm->modname, $collaborate);
 $event->trigger();
 
 // The renderer performs output to the page.
