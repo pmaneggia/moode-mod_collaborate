@@ -102,4 +102,5 @@ $string['edit'] = 'Here you can change the name';
 $string['namechange'] = 'Change module name';
 $string['action'] = 'Action';
 $string['collaboratetask'] = 'Have a go with a collaborate task';
-$string['submission_submitted'] = 'Event: submit a collaborate submission';
+$string['submission_submitted'] = 'Submission in collaborate';
+$string['submission_graded'] = 'Submission graded in collaborate';

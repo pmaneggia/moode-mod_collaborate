@@ -99,6 +99,15 @@ if ($data = $mform->get_data()) {
     // Update the submission data.
     submissions::update_grade($sid, $data->grade);
 
+    // week7 task3 add a new submission graded event
+    // week 7 - event
+    // Log the submission submitted event.
+    $event = \mod_collaborate\event\submission_graded::create(
+        ['context' => $PAGE->context, 'objectid' => $PAGE->cm->instance]);
+    $event->add_record_snapshot('course', $PAGE->course);
+    $event->add_record_snapshot($PAGE->cm->modname, $collaborate);
+    $event->trigger();
+
     // new in week 6 task 3
     // Update the gradebook.
     collaborate_update_grades($collaborate);
