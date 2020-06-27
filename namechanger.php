@@ -92,7 +92,13 @@ if ($mform->is_cancelled()) {
 
 // If we have data save it and return.
 if ($data = $mform->get_data()) {
-        $DB->update_record('collaborate',$data);
+        // $DB->update_record('collaborate',$data); //changed in week 7 to ad hoc task
+        
+        // Replace update with call to ad_hoc task // week 7 this is the ad hoc taks
+        $updatetask = new \mod_collaborate\task\collaborate_adhoc();
+        $updatetask->set_custom_data($data);
+        \core\task\manager::queue_adhoc_task($updatetask);
+
         redirect($PAGE->url, get_string('updated', 'core', $data->name), 2);
 }
 

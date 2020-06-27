@@ -13,21 +13,25 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
+namespace mod_collaborate\task;
+defined('MOODLE_INTERNAL') || die();
+require_once($CFG->dirroot . '/mod/collaborate/lib.php');
 /**
- * Defines the version and other meta-info about the plugin
+ * A ad hoc task.
  *
  * @package    mod_collaborate
- * @copyright  2019 Richard Jones richardnz@outlook.com
+ * @since      Moodle 2.7
+ * @copyright  2015 Flash Gordon http://www.flashgordon.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_collaborate
- * @see https://github.com/justinhunt/moodle-mod_collaborate
  */
+class collaborate_adhoc extends \core\task\adhoc_task {
 
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'mod_collaborate';
-$plugin->version = 2020062700;
-$plugin->release = 'v1.0'; // Collaborate activity.
-$plugin->requires = 2017111301; // Moodle 3.4, 3.5, 3.6, 3.7
-$plugin->maturity = MATURITY_BETA;
+     /**
+     *  Run all the tasks
+     */
+     public function execute(){
+            $trace = new \text_progress_trace();
+            $cd =  $this->get_custom_data();
+            collaborate_do_adhoc_task($trace, $cd);
+    }
+}

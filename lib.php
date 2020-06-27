@@ -603,11 +603,26 @@ function collaborate_extend_settings_navigation(settings_navigation $settingsnav
 
 /**
  * A task called from scheduled or adhoc
- * Week 7
+ * Week 7 Task 1
  *
  * @param progress_trace trace object
  *
  */
 function collaborate_dotask(progress_trace $trace) {
     $trace->output('executing dotask');
+}
+
+/**
+ * A task called from adhoc
+ * Week 7 Task 2
+ *
+ * @param progress_trace trace object
+ * @param $data - form data to update a database record
+ */
+function collaborate_do_adhoc_task(progress_trace $trace, $data) {
+    global $DB;
+    $trace->output('executing dotask');
+    if ($DB->record_exists('collaborate', array('id' => $data->id))) {
+        $DB->update_record('collaborate', $data);
+    }
 }
