@@ -596,9 +596,7 @@ function collaborate_extend_settings_navigation(settings_navigation $settingsnav
     // Week 7
     global $PAGE;
     $namechanger_url = new moodle_url('/mod/collaborate/namechanger.php', ['courseid' => $PAGE->course->id]);
-    $collaboratenode->add(get_string('namechange', 'mod_collaborate', $namechanger_url));
-    //$settingsnav->add(get_string('namechange', 'mod_collaborate', $namechanger_url));
-
+    $collaboratenode->add(get_string('namechange', 'mod_collaborate'), $namechanger_url);
 }
 
 /**
